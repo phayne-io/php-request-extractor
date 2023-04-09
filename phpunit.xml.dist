@@ -10,7 +10,7 @@
         </include>
     </coverage>
     <testsuites>
-        <testsuite name="PhayneTest\Template">
+        <testsuite name="PhayneTest\Request\\Extractor">
             <directory>./test</directory>
         </testsuite>
     </testsuites>

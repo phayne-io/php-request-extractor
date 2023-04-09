@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * This file is part of phayne-io/php-request-extractor package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @see       https://github.com/phayne-io/php-request-extractor for the canonical source repository
+ * @copyright Copyright (c) 2023 Phayne. (https://phayne.io)
+ */
+
+declare(strict_types=1);
+
+namespace PhayneTest\Request\Extractor;
+
+use Phayne\Request\Extractor\BodyExtractor;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use Psr\Http\Message\ServerRequestInterface;
+
+/**
+ * Class BodyExtractorTest
+ *
+ * @package PhayneTest\Request\Extractor
+ * @author Julien Guittard <julien@phayne.com>
+ */
+class BodyExtractorTest extends TestCase
+{
+    use ProphecyTrait;
+
+    public function testReturnsRequestBody(): void
+    {
+        $data = ['foo' => 'bar'];
+        $request = $this->prophesize(ServerRequestInterface::class);
+        $request->getParsedBody()->willReturn($data);
+        $extractor = new BodyExtractor();
+        $this->assertEquals($data, $extractor->extractData($request->reveal()));
+    }
+}
