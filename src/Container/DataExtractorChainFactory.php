@@ -31,7 +31,7 @@ final class DataExtractorChainFactory
             $container->get(Extractor\BodyExtractor::class),
             $container->get(Extractor\FileExtractor::class),
             $container->get(Extractor\ParamsExtractor::class),
-            $container->get(Extractor\AttributesExtractor::class),
+            //$container->get(Extractor\AttributesExtractor::class),
         ]);
     }
 }
